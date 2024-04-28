@@ -1,0 +1,65 @@
+
+<!--.ejs faili ülesandeks: to execute JavaScript, asendab hmtl faili -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2a5d3cbefe.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>My First Heroku Project</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="movie-card">
+            <h2 class="movie-title"><%= dataToRender.title %></h2> <!--siia tuleb info .js failsit dataToRender-->
+            <p class="movie-genres">
+                <span   class="movie-rating">PG-13, </span> 
+                <span class="release-date"><%= releaseYear %>, </span>
+                <span class="genres"><%= genres %></span> 
+                <span class="movie-duration"><%= dataToRender.runtime %> minutes</span>
+            </p>
+            <div class="movie-poster-container">
+                <a href="https://www.themoviedb.org/movie/550988-free-guy">
+                <img src="<%= poster %>" alt=""></a>
+            </div>
+
+            <div class="movie-info-container">
+                <p class="movie-info-quote"><%= dataToRender.tagline %></p>
+
+                <h2 class="movie-info-overview-title">overview</h2>
+                <p class="movie-info-overview"><%= dataToRender.overview %></p>
+
+                <div class="movie-info-actions">
+                    <ul>
+                        <li><a href="#" class="add-fav"><i class="fas fa-heart"></i></a></li>
+                        <li><a href="#" class="add-bookmark"><i class="fas fa-bookmark"></i></a></li>
+                        <li><a href="#" class="rate-movie"><i class="fas fa-star-half-alt"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <h3>Find me to discuss the movie</h3>
+             
+            <ul>
+                <li> <a href="#">Twitter <!--fontawesome twitter icon--></a></li>
+                <li> <a href="#">Instagram <!--fontawesome instagram icon--></i></a> </li>
+                <li> <a href="#">Facebook <!--fontawesome facebook icon--></a> </li>
+            </ul>
+    
+            <p>Kristiina A &#169; <span class="year"><%= year %></span></p> <!--peab arvestama, mis aeg serveril jookseb-->
+    
+        </footer>
+
+    </div>
+
+</body>
+</html>
+    
+</body>
+</html>

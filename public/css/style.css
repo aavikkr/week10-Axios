@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap')
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Roboto", sans-serif;
+    color: #151515;
+}
+
+.movie-card {
+display: inline;
+text-align: center;
+}
+
+.movie-title {
+    text-transform: uppercase;
+    margin-top: 5rem;
+    transform: translateY(-150px); 
+    animation: slide-from-top 3.5s ease-in-out forwards;
+}
+
+@keyframes slide-from-top {
+    80% {transform: translateY(20px);} 
+    100% {transform: translateY(0);}  
+}
+
+.movie-poster-container img {
+    margin-top: 2rem;
+    height: 800px;
+    border-radius:5px;
+}
+
+.movie-poster-container {
+    opacity: 0.1; /*alguses läbipaistvus 0.1*/
+    animation: fade-in 2.5s ease-in-out forwards;  
+}
+
+@keyframes fade-in { 
+    100% { 
+        opacity: 1;
+    }
+}
+
+.movie-poster-container {
+    width: auto;
+    cursor: pointer; /*pildile liikudes muutuks nool käeks*/    
+}
+
+
+.movie-info-overview-title {
+    margin-top: 2rem;
+    text-transform: capitalize;
+}
+
+.movie-info-overview{
+    text-align: justify;
+    margin: auto;
+    width: 70%;
+    line-height: 1.5;
+   
+}
+   
+
+.movie-info-actions ul {
+    list-style: none;
+}
+
+.movie-info-actions ul li {
+    display: inline-block;
+    margin-right: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: rgb(3, 37, 65);
+    
+}
+
+.movie-info-actions ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.movie-info-actions ul li:hover{
+    font-size:1.1rem; 
+    transform: scale(1.5); /*suureneb 1.5*/
+}
+
+
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    color: #777;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer ul li {
+    display: inline-block;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+}
+
+footer ul li a {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #777;
+}
