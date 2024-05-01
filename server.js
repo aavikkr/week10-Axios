@@ -1,11 +1,13 @@
 //vaja lisada kasutatavad paketid enne rakenduse initsialisseerimist
 const express = require("express");
 const axios = require("axios");
+const http = require("http");
 const app = express();
 
 app.set("view engine", "ejs"); //ejs on extention, hakkab haldama vaadet, pakib html'i andmetega kokku ja saadab kasutajale
 app.use(express.static("public")); //mis kaustast lubame faile välja saata
 app.use(express.urlencoded({ extended: true })); // kuidas andmeid lahti lugeda
+app.use(express.json());
 
 
 app.get("/", (req, res)=>{ //request ja response
@@ -96,6 +98,56 @@ app.post("/search", (req, res)=> {
     }));
 
 });
+
+
+
+//new route - selle andis õppejõud ette
+app.post('/getmovie', (req, res) => {
+	const movieToSearch =
+		req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.movie
+			? req.body.queryResult.parameters.movie
+			: '';
+
+	const reqUrl = encodeURI(
+		`http://www.omdbapi.com/?t=${movieToSearch}&apikey=cc6f9d1b`
+	);
+	http.get(
+		reqUrl,
+		responseFromAPI => {
+			let completeResponse = ''
+			responseFromAPI.on('data', chunk => {
+				completeResponse += chunk
+			})
+			responseFromAPI.on('end', () => {
+				const movie = JSON.parse(completeResponse);
+                if (!movie || !movie.Title) {
+                    return res.json({
+                        fulfillmentText: 'Sorry, we could not find the movie you are asking for.',
+                        source: 'getmovie'
+                    });
+                }
+
+				let dataToSend = movieToSearch;
+				dataToSend = `${movie.Title} was released in the year ${movie.Year}. It is directed by ${
+					movie.Director
+				} and stars ${movie.Actors}.\n Here some glimpse of the plot: ${movie.Plot}.`;
+
+				return res.json({
+					fulfillmentText: dataToSend,
+					source: 'getmovie'
+				});
+			})
+		},
+		error => {
+			return res.json({
+				fulfillmentText: 'Could not get results at this time',
+				source: 'getmovie'
+			});
+		}
+	)
+});
+
+
 
 
 app.listen(process.env.PORT || 3000, ()=>{ //localhost 3000 on meie masin, lisasime siia ette, et ei oleks rangelt seaotud pordiga 3000, vaid on vabadus valida port, et panna kood käima
