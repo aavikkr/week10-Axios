@@ -11,9 +11,14 @@ html {
     color: #151515;
 }
 
+.form-container {
+    display: inline;
+    text-align: center; 
+}
+
 .movie-card {
-display: inline;
-text-align: center;
+    display: inline;
+    text-align: center;
 }
 
 .movie-title {
@@ -119,4 +124,50 @@ footer ul li a {
     text-transform: uppercase;
     text-decoration: none;
     color: #777;
+}
+
+
+
+
+.result-container {
+    display: inline;
+    text-align: center;
+   
+}
+
+.movie-data-list {
+    list-style: none;
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 70%;
+    line-height: 1.5;
+}
+
+.image-container img {
+    
+    margin-bottom: 2rem;
+    height: 800px;
+    border-radius:5px;
+}
+
+.image-container {
+    opacity: 0.1; /*alguses läbipaistvus 0.1*/
+    animation: fade-in2 2.5s ease-in-out forwards;  
+}
+
+@keyframes fade-in2 { 
+    100% { 
+        opacity: 1;
+    }
+}
+
+.back-button-container {
+    margin-bottom: 2rem;
+}
+
+.back-button-container:hover{
+    font-size:1.1rem; 
+    transform: scale(1.1); /*suureneb 1.5*/
 }
