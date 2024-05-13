@@ -153,3 +153,5 @@ app.post('/getmovie', (req, res) => {
 app.listen(process.env.PORT || 3000, ()=>{ //localhost 3000 on meie masin, lisasime siia ette, et ei oleks rangelt seaotud pordiga 3000, vaid on vabadus valida port, et panna kood käima
     console.log("Server is running on Port 3000.");
 });
+
+//w15 ül
