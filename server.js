@@ -102,14 +102,14 @@ app.post("/search", (req, res)=> {
 
 
 //new route - selle andis õppejõud ette
-app.post('/getmovie', (req, res) => {
+app.post('/getmovie', (req, res) => { //tuleb DialogFlowst
 	const movieToSearch =
 		req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.movie
 			? req.body.queryResult.parameters.movie
 			: '';
 
 	const reqUrl = encodeURI(
-		`http://www.omdbapi.com/?t=${movieToSearch}&apikey=cc6f9d1b`
+		`http://www.omdbapi.com/?t=${movieToSearch}&apikey=a15931` //anname edasi sellele lingile päringu
 	);
 	http.get(
 		reqUrl,
@@ -132,7 +132,7 @@ app.post('/getmovie', (req, res) => {
 					movie.Director
 				} and stars ${movie.Actors}.\n Here some glimpse of the plot: ${movie.Plot}.`;
 
-				return res.json({
+				return res.json({ //kui andmed on kätte saadud, tagastab need
 					fulfillmentText: dataToSend,
 					source: 'getmovie'
 				});
