@@ -171,3 +171,9 @@ footer ul li a {
     font-size:1.1rem; 
     transform: scale(1.1); /*suureneb 1.5*/
 }
+
+.chat-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
